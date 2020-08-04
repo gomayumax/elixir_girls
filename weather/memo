@@ -1,0 +1,8 @@
+File.stream!("predaily00_rct.csv") |> CSV.decode! |> Enum.map(fn list -> list |> Enum.with_index |> Enum.reduce(%{}, & &2 |> Map.put( elem( &1, 1 ), elem( &1, 0 ))) end)
+
+
+
+File.stream!("predaily00_rct.csv") |> CSV.decode!(headers: true) |> Enum.to_list |> Enum.map(&[ &1[ "都道府県" ], &1[ "地点" ], &1[ "現在時刻(年)" ], &1[ "現在時刻(月)" ], &1[ "現在時刻(日)" ], "現在時刻(分)" ], &1[ "昨日までの観測史上1位の値(mm)" ]]) 
+
+
+File.stream!("predaily00_rct.csv") |> CSV.decode!(headers: true) |> Enum.to_list |> Enum.map(&[ &1[ "都道府県" ], &1[ "昨日までの観測史上1位の値(mm)" ]])  
