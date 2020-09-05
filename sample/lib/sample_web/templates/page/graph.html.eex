@@ -1,6 +1,40 @@
 <%
 data = Sample.csv_headers
+columns = [ "id", "title", "created_at", "likes_count" ]
 %>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load( "visualization", "1", { packages:[ "corechart" ] } );
+  google.setOnLoadCallback
+  (
+    function()
+    {
+      var data = new google.visualization.DataTable();
+      data.addColumn( 'string', '都道府県' );
+      data.addColumn( 'number', '昨日までの観測史上1位の値(mm)' );
+      data.addRows
+      ( [
+<%= for record <- data do %>
+        [ '<%= record[ "都道府県" ] %>', <%= record[ "昨日までの観測史上1位の値(mm)" ] %> ],
+<% end %>
+      ] );
+      var options =
+      {
+        title: '都道府県ごとの昨日までの観測史上1位の値(mm)',
+        width: 1000,
+        height: 600,
+        chartArea: { width: '30%' },
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.BarChart( document.getElementById( 'precipitation-amount' ) );
+      chart.draw( data, options );
+    }
+  );
+</script>
+
+<div id="precipitation-amount" style="margin: 0px; padding: 0px; border: 10px #0000ff;"></div>
+
+
 <table border="1">
 <%= for record <- data do %>
 <tr>
