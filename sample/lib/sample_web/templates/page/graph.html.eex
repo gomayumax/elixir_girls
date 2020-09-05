@@ -1,0 +1,12 @@
+<%
+data = Sample.csv_headers
+%>
+<table border="1">
+<%= for record <- data do %>
+<tr>
+  <td><%= record[ "都道府県" ] %></td>
+  <td><%= record[ "地点" ] %></td>
+  <td><%= record[ "昨日までの観測史上1位の値(mm)" ] %></td>
+</tr>
+<% end %>
+</table>

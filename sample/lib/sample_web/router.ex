@@ -17,6 +17,7 @@ defmodule SampleWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/graph", PageController, :graph
   end
 
   # Other scopes may use custom stacks.
