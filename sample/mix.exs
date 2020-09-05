@@ -43,7 +43,7 @@ defmodule Sample.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:csv, "~> 2.3"},
-      {:smallex, "~> 0.0" }
+      {:smallex, "~> 0.0"}
     ]
   end
 
